@@ -5,7 +5,7 @@ from nose.tools import *
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../")
 
-from lib.algos.sibling_ptr import sibling_ptr, BinaryTree
+from lib.algos.graph_problems import sibling_ptr, BinaryTree
 
 
 class TestSiblingTree (unittest.TestCase):
