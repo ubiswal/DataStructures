@@ -1,12 +1,8 @@
-import sys
-import os
 import unittest
-from nose.tools import *
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../")
 
-from lib.ds.queue import Queue
 from lib.ds.stack import Stack, StackOverflowException, StackUnderflowException
+
 
 class TestStack (unittest.TestCase):
     def setUp(self):
@@ -18,10 +14,8 @@ class TestStack (unittest.TestCase):
         
         for i in range(2,-1,-1):
             self.assertEquals(i, self.test_stack.pop())
-    
-    @raises(StackOverflowException)
+
     def test_overflow_stack(self):
-        for i in range(0,6):
+        for i in range(0,5):
             self.test_stack.push(i)
-        
-        
+        self.assertRaises(StackOverflowException, self.test_stack.push, 10)

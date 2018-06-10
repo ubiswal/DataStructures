@@ -1,9 +1,4 @@
-import sys
-import os
 import unittest
-from nose.tools import *
-
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../")
 
 from lib.algos.graph_problems import sibling_ptr, BinaryTree
 

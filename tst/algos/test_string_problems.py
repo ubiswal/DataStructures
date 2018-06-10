@@ -1,8 +1,4 @@
-import sys
-import os
 import unittest
-
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../")
 
 from lib.algos.string_problems import split_string, split_string_memoized, check_balanced_parantheses
 

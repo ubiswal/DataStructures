@@ -1,11 +1,8 @@
-import sys
-import os
 import unittest
-
-sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../../")
 
 from lib.algos.sorts import bubble_sort
 from lib.algos.sorts import merge_sort
+
 
 class TestSorts (unittest.TestCase):
     def test_bubble_sort(self):
