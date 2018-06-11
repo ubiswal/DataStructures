@@ -49,3 +49,25 @@ def find_max_sum_in_min_pairs(arr):
     for i in range(0, len(sorted_arr), 2):
         max_sum = max_sum + sorted_arr[i]
     return max_sum
+
+
+def find_pascals_triangle(row, col, memo):
+    if (row, col) in memo:
+        return memo[(row, col)]
+    if col == 0:
+        return 1
+    if row == 0:
+        return 0
+    retval = find_pascals_triangle(row - 1, col, memo) + find_pascals_triangle(row - 1, col - 1, memo)
+    memo[(row, col)] = retval
+    return retval
+
+
+def generate_n_level_pascals_triangle(n):
+    memo = {}
+    matrix = []
+    for i in range(0, n):
+        matrix.append([])
+        for j in range(0, i + 1):
+            matrix[i].append(find_pascals_triangle(i, j, memo))
+    return matrix
