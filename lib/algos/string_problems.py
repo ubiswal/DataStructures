@@ -5,9 +5,9 @@ def split_string(input_str, my_dict):
         num_ways = 1
     my_str = ""
     for i in range(0, len(input_str)):
-        my_str = my_str+input_str[i]
+        my_str = my_str + input_str[i]
         if my_str in my_dict:
-            num_ways = num_ways + split_string(input_str[i+1:], my_dict)
+            num_ways = num_ways + split_string(input_str[i + 1:], my_dict)
     return num_ways
 
 
@@ -19,9 +19,9 @@ def split_string_memoized(input_str, my_dict, memo):
         num_ways = 1
     my_str = ""
     for i in range(0, len(input_str)):
-        my_str = my_str+input_str[i]
+        my_str = my_str + input_str[i]
         if my_str in my_dict:
-            num_ways = num_ways + split_string_memoized(input_str[i+1:], my_dict, memo)
+            num_ways = num_ways + split_string_memoized(input_str[i + 1:], my_dict, memo)
     memo[input_str] = num_ways
     return num_ways
 
@@ -35,11 +35,11 @@ def check_balanced_parantheses(input_str):
 
     for i in range(0, len(input_str)):
         if input_str[i] == "{":
-            brace1 = brace1+1
+            brace1 = brace1 + 1
         elif input_str[i] == "[":
-            brace2 = brace2+1
+            brace2 = brace2 + 1
         elif input_str[i] == "(":
-            brace3 = brace3+1
+            brace3 = brace3 + 1
 
         if input_str[i] == "}":
             brace1 = brace1 - 1
@@ -55,4 +55,3 @@ def check_balanced_parantheses(input_str):
             return False
 
     return brace1 == 0 and brace2 == 0 and brace3 == 0
-

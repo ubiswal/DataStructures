@@ -4,7 +4,7 @@ from lib.algos.sorts import bubble_sort
 from lib.algos.sorts import merge_sort, merge
 
 
-class TestSorts (unittest.TestCase):
+class TestSorts(unittest.TestCase):
     def test_bubble_sort(self):
         input_arr = [1, 3, 7, 2, 9, 5]
         bubble_sort(input_arr)
@@ -22,7 +22,5 @@ class TestSorts (unittest.TestCase):
 
     def test_merge_sort(self):
         input_arr = [1, 3, 7, 2, 9, 5]
-        merge_sort(input_arr,0,len(input_arr))
+        merge_sort(input_arr, 0, len(input_arr))
         self.assertEquals([1, 2, 3, 5, 7, 9], input_arr)
-
-

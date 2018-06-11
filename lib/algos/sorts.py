@@ -11,7 +11,7 @@ def bubble_sort(input_arr):
 
 
 def merge_sort(arr, start, end):
-    if end-start == 1:
+    if end - start == 1:
         return
     mid = (start + end) // 2
     merge_sort(arr, start, mid)
@@ -27,7 +27,7 @@ def merge(arr, start, end):
     while i < middle and j < end:
         if arr[i] < arr[j]:
             new_arr.append(arr[i])
-            i = i+1
+            i = i + 1
         else:
             new_arr.append(arr[j])
             j = j + 1
