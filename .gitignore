@@ -1,3 +1,5 @@
 .c9/
 *.pyc
 .idea/
+coverage.xml
+.coverage
