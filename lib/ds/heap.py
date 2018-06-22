@@ -42,3 +42,7 @@ class MinHeap:
         del self.arr[-1]
         self.min_heapify(0)
         return retval
+
+    def update_key(self, elem):
+        idx = self.arr.index(elem)
+        self.min_heapify(idx)

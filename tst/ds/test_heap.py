@@ -24,4 +24,3 @@ class TestHeap(unittest.TestCase):
             self.assertFalse(arr[i] != expected_arr[i])
 
         self.assertIsNone(self.test_heap.extract_min())
-

@@ -1,3 +1,6 @@
+from lib.ds.heap import MinHeap
+
+
 class BinaryTree:
     def __init__(self, val):
         self.val = val
@@ -19,3 +22,43 @@ def sibling_ptr(tree):
         for i in range(0, len(nxt) - 1):
             nxt[i].sibling = nxt[i + 1]
         frontier = nxt
+
+
+def dijkstra(G, s):
+    S = {s: None}
+    d = {}
+    for vertex in G.keys():
+        d[vertex] = float("Inf")
+    d[s] = 0.0
+    Q = MinHeap(list(G.keys()), lambda x: d[x])
+
+    while len(Q.arr) > 0:
+        u = Q.extract_min()
+        for v, w in G[u]:
+            if d[v] > d[u] + w:
+                d[v] = d[u] + w
+                S[v] = u
+                if v in Q.arr:
+                    Q.update_key(v)
+    return d
+
+
+def bellman_ford(G, s):
+    S = {s: None}
+    d = {}
+    for vertex in G.keys():
+        d[vertex] = float("Inf")
+    d[s] = 0.0
+
+    for i in range(0, len(G.keys()) - 1):
+        for u in G.keys():
+            for v, w in G[u]:
+                if d[v] > d[u] + w:
+                    d[v] = d[u] + w
+                    S[v] = u
+
+    for u in G.keys():
+        for v, w in G[u]:
+            if d[v] > d[u] + w:
+                d[v] = -float("Inf")
+    return d
