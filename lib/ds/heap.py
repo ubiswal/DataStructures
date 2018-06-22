@@ -6,7 +6,7 @@ class MinHeap:
 
     def create_min_heap(self, arr):
         N = len(arr) - 1
-        for idx in range(0, N / 2):
+        for idx in range(0, N // 2):
             self.min_heapify(idx)
 
     @staticmethod
@@ -18,7 +18,7 @@ class MinHeap:
         return 2 * idx + 2
 
     def min_heapify(self, idx):
-        if idx > (len(self.arr) - 1) / 2:
+        if idx >= (len(self.arr) - 1) / 2:
             return
 
         left = MinHeap.get_left_child_idx(idx)
@@ -35,6 +35,8 @@ class MinHeap:
         self.min_heapify(small)
 
     def extract_min(self):
+        if len(self.arr) == 0:
+            return None
         retval = self.arr[0]
         self.arr[0] = self.arr[-1]
         del self.arr[-1]
