@@ -55,3 +55,20 @@ def check_balanced_parantheses(input_str):
             return False
 
     return brace1 == 0 and brace2 == 0 and brace3 == 0
+
+
+def find_coin_denomination(total, coin_list, memo):
+    key = (total, str(coin_list))
+    if key in memo:
+        return memo[key]
+    num_ways = 0
+    if total!=0 and len(coin_list)==0:
+        return 0
+    if total == 0:
+        return 1
+
+    num_coins = total//coin_list[0] + 1
+    for j in range(0,num_coins):
+        num_ways= num_ways+find_coin_denomination(total-j*coin_list[0], coin_list[1:], memo)
+    memo[key] = num_ways
+    return num_ways

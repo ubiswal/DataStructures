@@ -71,3 +71,17 @@ def generate_n_level_pascals_triangle(n):
         for j in range(0, i + 1):
             matrix[i].append(find_pascals_triangle(i, j, memo))
     return matrix
+
+
+def find_max_diff_of_sum_in_two_rows(matrix):
+    sum_row=[sum(row) for row in matrix]
+
+    max_diff = sum_row[1] - sum_row[0]
+    min_sum = sum_row[0]
+    for i in range(1, len(sum_row)):
+        if sum_row[i]-min_sum>max_diff:
+            max_diff = sum_row[i]-min_sum
+        elif min_sum>sum_row[i]:
+            min_sum = sum_row[i]
+    return max_diff
+

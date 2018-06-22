@@ -6,7 +6,7 @@ class MinHeap:
 
     def create_min_heap(self, arr):
         N = len(arr) - 1
-        for idx in range(0, N / 2):
+        for idx in range(N / 2, -1, -1):
             self.min_heapify(idx)
 
     @staticmethod
@@ -18,7 +18,7 @@ class MinHeap:
         return 2 * idx + 2
 
     def min_heapify(self, idx):
-        if idx > (len(self.arr) - 1) / 2:
+        if idx >= (len(self.arr) - 1) / 2:
             return
 
         left = MinHeap.get_left_child_idx(idx)
@@ -26,13 +26,19 @@ class MinHeap:
 
         small = left
         if right < len(self.arr):
-            if self.key(self.arr[small]) > self.key(self.arr[right]):
+            if self.arr[right] and self.key(self.arr[small]) > self.key(self.arr[right]):
                 small = right
-        if self.key(self.arr[idx]) > self.key(self.arr[small]):
-            temp = self.arr[idx]
-            self.arr[idx] = self.arr[small]
-            self.arr[small] = temp
-        self.min_heapify(small)
+        if self.arr[small]:
+            if self.key(self.arr[idx]) > self.key(self.arr[small]):
+                temp = self.arr[idx]
+                self.arr[idx] = self.arr[small]
+                self.arr[small] = temp
+            self.min_heapify(small)
+
+    def update_key(self, node):
+        idx = self.arr.index(node)
+        self.min_heapify(idx)
+
 
     def extract_min(self):
         retval = self.arr[0]
