@@ -62,3 +62,16 @@ def bellman_ford(G, s):
             if d[v] > d[u] + w:
                 d[v] = -float("Inf")
     return d
+
+
+def find_closest_smaller(my_bst, val):
+    smaller = my_bst.smallest()
+    it = my_bst
+    while it:
+        if it.val > smaller and it.val <= val:
+            smaller = it.val
+        if val < it.val:
+            it = it.left
+        else:
+            it = it.right
+    return smaller

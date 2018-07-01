@@ -1,6 +1,7 @@
 import unittest
 
-from lib.algos.graph_problems import sibling_ptr, BinaryTree, dijkstra, bellman_ford
+from lib.algos.graph_problems import *
+from lib.ds.bst import Bst
 
 
 class TestSiblingTree(unittest.TestCase):
@@ -18,6 +19,21 @@ class TestSiblingTree(unittest.TestCase):
             "D": [("E", 7), ],
             "E": [("D", 9)]
         }
+        self.bst = Bst(50)
+        self.bst.left = Bst(25)
+        self.bst.left.left = Bst(12)
+        self.bst.left.right = Bst(35)
+        self.bst.left.right.left = Bst(33)
+        self.bst.left.right.left.right = Bst(34)
+        self.bst.left.right.left.left = Bst(32)
+        self.bst.right = Bst(100)
+        self.bst.right.right = Bst(150)
+        self.bst.right.left = Bst(75)
+        self.bst.right.left.left = Bst(60)
+        self.bst.right.left.left.right = Bst(65)
+        self.bst.right.left.left.right.right = Bst(66)
+        self.bst.right.left.right = Bst(80)
+        self.bst.right.left.right.left = Bst(77)
 
     def test_sibling_ptr(self):
         sibling_ptr(self.tree)
@@ -44,3 +60,8 @@ class TestSiblingTree(unittest.TestCase):
             "E": 5
         }
         self.assertEquals(bellman_ford(self.adj_list, "A"), expected_distances)
+
+    def test_smaller_closest(self):
+        self.assertEqual(50, find_closest_smaller(self.bst, 56))
+        self.assertEqual(60, find_closest_smaller(self.bst, 62))
+        self.assertEqual(35, find_closest_smaller(self.bst, 36))
