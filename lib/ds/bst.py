@@ -35,3 +35,11 @@ class Bst:
         check_left = self.left is None or (self.left and self.left.is_bst() and self.val > self.left.greatest())
         check_right = self.right is None or (self.right and self.right.is_bst() and self.val < self.right.smallest())
         return check_left and check_right
+
+    def parse(self, arr):
+        if self.left:
+            self.left.parse(arr)
+        arr.append(self.val)
+
+        if self.right:
+            self.right.parse(arr)
